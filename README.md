@@ -1,10 +1,6 @@
 # MagaluMusic
 
-MagaluMusic é um aplicativo de streaming de música inspirado no Spotify.
-
-Ele utiliza a API pública do Deezer para buscar artistas, álbuns e músicas.
-Desenvolvido com Android nativo usando Kotlin, Jetpack Compose, e arquitetura MVVM com
-Hilt para injeção de dependência.
+MagaluMusic é um aplicativo de streaming de música inspirado no Spotify. Ele utiliza a API pública do Deezer para buscar artistas, álbuns e músicas. Desenvolvido com Android nativo usando Kotlin, Jetpack Compose, e arquitetura MVVM com Hilt para injeção de dependência.
 
 ## Funcionalidades
 
@@ -23,4 +19,3 @@ Hilt para injeção de dependência.
 - **Consumo de API:** Retrofit + Gson
 - **Persistência local:** SharedPreferences (Futuramente com Room ou DataStore)
 - **Testes:** JUnit, MockWebServer, kotlinx-coroutines-test
-

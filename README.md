@@ -17,7 +17,5 @@ MagaluMusic é um aplicativo de streaming de música inspirado no Spotify. Ele u
 - **Arquitetura:** MVVM
 - **Injeção de Dependência:** Hilt
 - **Consumo de API:** Retrofit + Gson
-- **Persistência local:** (Futuramente com Room ou DataStore)
+- **Persistência local:** SharedPreferences (Futuramente com Room ou DataStore)
 - **Testes:** JUnit, MockWebServer, kotlinx-coroutines-test
-
-## Estrutura de Pacotes

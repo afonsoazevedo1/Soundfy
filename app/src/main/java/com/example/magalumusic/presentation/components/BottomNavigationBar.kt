@@ -1,3 +1,4 @@
+
 import android.net.Uri
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -7,10 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
+import com.example.magalumusic.R
 import com.example.magalumusic.ui.navigation.Routes
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
-import com.example.magalumusic.R
 
 @Composable
 fun BottomNavigationBar(
@@ -54,7 +55,7 @@ fun BottomNavigationBar(
         NavigationBarItem(
             icon = {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_disc),
+                    painter = painterResource(id = R.drawable.ic_user),
                     contentDescription = "Perfil"
                 )
             },

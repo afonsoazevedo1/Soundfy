@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">MagaluMusic</string>
+    <string name="app_name">Soundfy</string>
+    <string name="no_album">Nenhum álbum encontrado.</string>
+    <string name="login_with_spotify">Entre com sua conta Spotify</string>
+    <string name="enter">Entrar</string>
+    <string name="close">Fechar</string>
+    <string name="exit">Sair</string>
+    <string name="name_your_playlist">Dê um nome a sua playlist</string>
+    <string name="my_playlist">Minha playlist</string>
+    <string name="no_playlist">Nenhuma playlist criada</string>
+    <string name="please_insert_playlist_name">Por favor, insira o nome da playlist</string>
+    <string name="create">Criar </string>
+    <string name="playlists">Playlists</string>
+    <string name="profile">Perfil</string>"
+    <string name="logout">Sair</string>"
+    <string name="artist">Artistas</string>
+    <string name="avatar">Avatar</string>
+    <string name="left_icon">Icone esquerdo</string>
+    <string name="right_icon">Icone direito</string>
+    <string name="artist_image">Imagem do artista</string>
+    <string name="add_avatar">Toque na imagem acima para adicionar uma foto de perfil</string>
+    <string name="name_of_user">Nome do usuário</string>
+
 </resources>

@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MagaluMusic"
+rootProject.name = "Soundfy"
 include(":app")

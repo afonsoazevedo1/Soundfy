@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.magalumusic"
+    namespace = "com.example.soundfy"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.magalumusic"
+        applicationId = "com.example.soundfy"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

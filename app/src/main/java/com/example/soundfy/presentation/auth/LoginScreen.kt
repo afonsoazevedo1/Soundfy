@@ -17,14 +17,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.soundfy.R
+import com.example.soundfy.ui.theme.LocalDimens
 
 @Composable
 fun LoginScreen(onLoginClick: () -> Unit) {
 
     val context = LocalContext.current
+    val dimens = LocalDimens.current
 
     Box(
         modifier = Modifier
@@ -36,20 +36,22 @@ fun LoginScreen(onLoginClick: () -> Unit) {
             Text(
                 text = context.getString(R.string.login_with_spotify),
                 color = Color.White,
-                fontSize = 16.sp
+                fontSize = dimens.textMd
             )
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(dimens.spacingXl))
             Button(
                 onClick = onLoginClick,
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1DB954)),
-                shape = RoundedCornerShape(50),
+                shape = RoundedCornerShape(dimens.cornerFull),
                 modifier = Modifier
-                    .width(150.dp)
-                    .height(48.dp)
+                    .width(dimens.buttonWidthMd)
+                    .height(dimens.buttonHeightMd)
             ) {
                 Text(
                     text = context.getString(R.string.enter),
-                    fontWeight = FontWeight.Bold)
+                    fontWeight = FontWeight.Bold,
+                    fontSize = dimens.textSm
+                )
             }
         }
     }

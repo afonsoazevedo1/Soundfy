@@ -33,10 +33,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.soundfy.R
+import com.example.soundfy.ui.theme.LocalDimens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -45,8 +44,8 @@ fun AddPlaylistDialog(
     onDismiss: () -> Unit,
     onSave: (playlistName: String) -> Unit
 ) {
-
     val context = LocalContext.current
+    val dimens = LocalDimens.current
 
     if (show) {
         var playlistName by remember { mutableStateOf("") }
@@ -56,12 +55,12 @@ fun AddPlaylistDialog(
             Surface(
                 modifier = Modifier.fillMaxWidth(),
                 color = Color(0xFF262020),
-                shape = RoundedCornerShape(12.dp)
+                shape = RoundedCornerShape(dimens.cornerMd)
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(horizontal = 24.dp, vertical = 24.dp),
+                        .padding(horizontal = dimens.spacingLg, vertical = dimens.spacingLg),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Row(
@@ -78,17 +77,18 @@ fun AddPlaylistDialog(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(dimens.spacingMd))
 
                     Text(
                         text = context.getString(R.string.name_your_playlist),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontSize = 14.sp,
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            fontSize = dimens.textSm,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
+                        )
                     )
 
-                    Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(dimens.spacingLg))
 
                     TextField(
                         value = playlistName,
@@ -103,7 +103,7 @@ fun AddPlaylistDialog(
                                 text = context.getString(R.string.my_playlist),
                                 fontWeight = FontWeight.Bold,
                                 textAlign = TextAlign.Center,
-                                fontSize = 24.sp,
+                                fontSize = dimens.textXl,
                                 modifier = Modifier.fillMaxWidth()
                             )
                         },
@@ -123,11 +123,11 @@ fun AddPlaylistDialog(
                             text = context.getString(R.string.please_insert_playlist_name),
                             color = Color.Red,
                             style = MaterialTheme.typography.bodySmall,
-                            modifier = Modifier.padding(start = 16.dp, top = 4.dp)
+                            modifier = Modifier.padding(start = dimens.spacingMd, top = dimens.spacingXs)
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(32.dp))
+                    Spacer(modifier = Modifier.height(dimens.spacingXxl))
 
                     Button(
                         onClick = {
@@ -139,13 +139,16 @@ fun AddPlaylistDialog(
                             }
                         },
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1DB954)),
-                        shape = RoundedCornerShape(50),
+                        shape = RoundedCornerShape(dimens.cornerFull),
                         modifier = Modifier
-                            .width(150.dp)
-                            .height(48.dp)
+                            .width(dimens.buttonWidthMd)
+                            .height(dimens.buttonHeightMd)
                     ) {
-                        Text(text = context.getString(R.string.create),
-                            fontWeight = FontWeight.Bold)
+                        Text(
+                            text = context.getString(R.string.create),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = dimens.textSm
+                        )
                     }
                 }
             }

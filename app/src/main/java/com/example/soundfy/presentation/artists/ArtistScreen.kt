@@ -19,13 +19,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.soundfy.R
 import com.example.soundfy.presentation.components.AlbumItem
 import com.example.soundfy.presentation.components.Header
 import com.example.soundfy.ui.navigation.Routes
+import com.example.soundfy.ui.theme.LocalDimens
 
 @Composable
 fun ArtistScreen(
@@ -37,6 +37,7 @@ fun ArtistScreen(
     val albums by viewModel.albums.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val context = LocalContext.current
+    val dimens = LocalDimens.current
 
     LaunchedEffect(artistName) {
         viewModel.fetchAlbumsByName(artistName)
@@ -50,7 +51,7 @@ fun ArtistScreen(
                 avatarUri = avatarUri,
                 leftIconResId = R.drawable.ic_arrow_left,
                 onLeftIconClick = { navController.popBackStack() },
-                imageSize = 62
+                imageSize = dimens.avatarSizeLg.value.toInt(),
             )
         },
         bottomBar = {
@@ -91,7 +92,7 @@ fun ArtistScreen(
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(horizontal = 16.dp)
+                        .padding(horizontal = dimens.spacingMd)
                         .padding(paddingValues)
                 ) {
                     items(albums) { album ->

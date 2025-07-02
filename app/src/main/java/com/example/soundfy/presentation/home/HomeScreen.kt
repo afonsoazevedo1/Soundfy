@@ -18,18 +18,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.soundfy.presentation.components.Header
 import com.example.soundfy.presentation.components.ArtistItem
+import com.example.soundfy.presentation.components.Header
 import com.example.soundfy.ui.navigation.Routes
+import com.example.soundfy.ui.theme.LocalDimens
 
 @Composable
 fun HomeScreen(
     navController: NavController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
+    val dimens = LocalDimens.current
     val avatarUri by viewModel.avatarUri.collectAsState()
 
     val imagePickerLauncher = rememberLauncherForActivityResult(
@@ -53,7 +54,7 @@ fun HomeScreen(
                 onAvatarClick = {
                     imagePickerLauncher.launch("image/*")
                 },
-                imageSize = 32,
+                imageSize = dimens.iconMd.value.toInt(),
             )
         },
         bottomBar = {
@@ -78,7 +79,7 @@ fun HomeScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(paddingValues)
-                    .padding(horizontal = 16.dp)
+                    .padding(horizontal = dimens.spacingBase)
             ) {
                 items(artists) { artist ->
                     ArtistItem(artist = artist) {

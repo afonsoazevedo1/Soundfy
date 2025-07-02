@@ -23,6 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.soundfy.R
+import com.example.soundfy.ui.theme.LocalDimens
 
 @Composable
 fun Header(
@@ -33,37 +34,38 @@ fun Header(
     onAvatarClick: () -> Unit = {},
     leftIconResId: Int? = null,
     onLeftIconClick: (() -> Unit)? = null,
-    imageSize: Int
+    imageSize: Int // mantém Int porque o consumo já usa `.value.toInt()`
 ) {
-
     val context = LocalContext.current
+    val dimens = LocalDimens.current
 
-    Spacer(modifier = Modifier.width(15.dp))
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(
+                horizontal = dimens.spacingBase,
+                vertical = dimens.spacingSm
+            ),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-
         if (leftIconResId != null && onLeftIconClick != null) {
             Image(
                 painter = painterResource(id = leftIconResId),
                 contentDescription = context.getString(R.string.left_icon),
                 modifier = Modifier
-                    .size(28.dp)
+                    .size(dimens.iconMd)
                     .clickable { onLeftIconClick() }
             )
         }
 
-        Spacer(modifier = Modifier.width(28.dp))
+        Spacer(modifier = Modifier.width(dimens.spacingMd))
 
         Text(
             text = title,
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f)
         )
 
         val painter: Painter = when {

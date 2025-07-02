@@ -31,12 +31,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.soundfy.R
 import com.example.soundfy.ui.navigation.Routes
+import com.example.soundfy.ui.theme.LocalDimens
 
 @Composable
 fun ProfileScreen(
@@ -45,6 +45,7 @@ fun ProfileScreen(
 ) {
 
     val context = LocalContext.current
+    val dimens = LocalDimens.current
 
     val avatarUri by viewModel.avatarUri.collectAsState()
 
@@ -77,23 +78,23 @@ fun ProfileScreen(
                 contentDescription = context.getString(R.string.avatar),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(dimens.avatarSizeLg)
                     .clip(CircleShape)
-                    .border(2.dp, Color.Black, CircleShape)
+                    .border(dimens.borderRegular, Color.Black, CircleShape)
                     .clickable {
                         imagePickerLauncher.launch("image/*")
                     }
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(dimens.spacingXs))
 
             Text(
                 text = context.getString(R.string.add_avatar),
                 style = MaterialTheme.typography.bodySmall.copy(color = Color.Gray),
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = Modifier.padding(top = dimens.spacingXs)
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(dimens.spacingMd))
 
             Text(
                 text = context.getString(R.string.name_of_user),
@@ -103,7 +104,7 @@ fun ProfileScreen(
                 )
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(dimens.spacingXl))
 
             Button(
                 onClick = {
@@ -115,14 +116,14 @@ fun ProfileScreen(
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1DB954)),
                 shape = RoundedCornerShape(50),
                 modifier = Modifier
-                    .width(150.dp)
-                    .height(48.dp)
+                    .width(dimens.buttonWidthMd)
+                    .height(dimens.buttonHeightMd)
             ) {
                 Text(
                     text = context.getString(R.string.exit),
-                    fontWeight = FontWeight.Bold)
+                    fontWeight = FontWeight.Bold
+                )
             }
         }
     }
 }
-

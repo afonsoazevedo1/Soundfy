@@ -1,4 +1,5 @@
 [versions]
+accompanistAdaptive = "0.33.2-alpha"
 agp = "8.9.2"
 coilCompose = "2.5.0"
 converterMoshi = "2.9.0"
@@ -22,6 +23,7 @@ ui = "1.8.2"
 hiltAndroidGradlePlugin = "2.51.1"
 
 [libraries]
+accompanist-adaptive = { module = "com.google.accompanist:accompanist-adaptive", version.ref = "accompanistAdaptive" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }

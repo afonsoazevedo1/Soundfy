@@ -31,8 +31,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
@@ -40,6 +38,7 @@ import com.example.soundfy.R
 import com.example.soundfy.presentation.components.AddPlaylistDialog
 import com.example.soundfy.presentation.components.Header
 import com.example.soundfy.ui.navigation.Routes
+import com.example.soundfy.ui.theme.LocalDimens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,6 +47,8 @@ fun PlaylistScreen(
     viewModel: PlaylistViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
+    val dimens = LocalDimens.current
+
     val avatarUri = viewModel.avatarUri
     val playlists by viewModel.playlists.collectAsState()
 
@@ -59,7 +60,7 @@ fun PlaylistScreen(
             Header(
                 title = context.getString(R.string.my_playlist),
                 avatarUri = avatarUri,
-                imageSize = 32
+                imageSize = dimens.iconMd.value.toInt()
             )
         },
         bottomBar = {
@@ -83,28 +84,28 @@ fun PlaylistScreen(
                     Text(
                         text = context.getString(R.string.no_playlist),
                         color = Color.White,
-                        fontSize = 16.sp
+                        fontSize = dimens.textMd
                     )
                 }
             } else {
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                        .padding(bottom = 72.dp)
+                        .padding(horizontal = dimens.spacingBase)
+                        .padding(bottom = dimens.spacingXxl)
                 ) {
                     items(playlists) { playlist ->
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(vertical = 8.dp)
+                                .padding(vertical = dimens.spacingSm)
                         ) {
                             Image(
                                 painter = rememberAsyncImagePainter(playlist.imageUrl),
                                 contentDescription = playlist.name,
                                 modifier = Modifier
-                                    .size(60.dp)
-                                    .padding(end = 12.dp),
+                                    .size(dimens.artistImageSize)
+                                    .padding(end = dimens.spacingSm),
                                 contentScale = ContentScale.Crop
                             )
                             Column {
@@ -129,11 +130,15 @@ fun PlaylistScreen(
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1DB954)),
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(16.dp)
-                    .height(42.dp)
-                    .width(185.dp)
+                    .padding(dimens.spacingBase)
+                    .height(dimens.buttonHeightMd)
+                    .width(dimens.buttonWidthXl)
             ) {
-                Text(text = "Criar playlist", fontWeight = FontWeight.Bold)
+                Text(
+                    text = "Criar playlist",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = dimens.textMd
+                )
             }
         }
 
